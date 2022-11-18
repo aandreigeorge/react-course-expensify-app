@@ -1,4 +1,4 @@
-import moment, { now } from 'moment';
+import moment from 'moment';
 import filtersReducer from '../../reducers/filters';
 
 test('should setup default filter values', () => {
