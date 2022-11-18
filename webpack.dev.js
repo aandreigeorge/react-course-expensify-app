@@ -9,6 +9,6 @@ module.exports = merge(common, {
   
   devServer: {
     static: path.join(__dirname, "public"),
-    historyApiFallback: true
+    historyApiFallback: true,
   }
 });
