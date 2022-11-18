@@ -9,8 +9,13 @@
     "build:prod": "webpack --config webpack.prod.js",
     "dev-server": "webpack serve --open --config webpack.dev.js",
     "test": "jest --config=jest.config.json",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "heroku-postbuild": "yarn run build:prod"
   },
+  "engines": {
+    "node": "^15.14.0",
+    "npm": "^7.10.0"
+},
   "author": "Andrei Avram",
   "license": "ISC",
   "dependencies": {
