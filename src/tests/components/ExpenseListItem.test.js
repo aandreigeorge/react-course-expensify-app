@@ -6,10 +6,10 @@ import ExpenseListItem from "../../components/ExpenseListItem";
 test('should render ExpenseListItem with expense item', () => {
     
     const wrapper = shallow(<ExpenseListItem 
-        id = {expenses[1].id} 
-        description = {expenses[1].description} 
-        amount = {expenses[1].amount}
-        createdAt = {expenses[1].createdAt}
+        id = {expenses[0].id} 
+        description = {expenses[0].description} 
+        amount = {expenses[0].amount}
+        createdAt = {expenses[0].createdAt}
         />);
     expect(wrapper).toMatchSnapshot();
 });
