@@ -1,4 +1,4 @@
-import { push, ref } from 'firebase/database';
+import { child, onValue, push, ref } from 'firebase/database';
 import db from '../firebase/firebase';
 import { _ } from 'numeral';
 
@@ -31,6 +31,28 @@ export const startAddExpense = (expenseData = {}) => {
     };
 };
 
+//SET_EXPENSES -gets the data from firebase and sets it to the Redux Store
+export const setExpenses = (expenses) => ({
+    type:'SET_EXPENSES',
+    expenses
+});
+
+export const startSetExpenses = () => {
+    return(dispatch) => {
+        return onValue(ref(db, 'expenses'), (snapshot) => {
+            const expenses = [];
+            snapshot.forEach((childSnapshot) => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            dispatch(setExpenses(expenses));
+        });
+    };
+};
+
+
 //REMOVE_EXPENSE ACTION
 export const removeExpense = ({id} = {}) => ({
     type: 'REMOVE_EXPENSE',
@@ -43,3 +65,4 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 });
+
